@@ -1,0 +1,45 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html>
+    <head>
+        <title>Profile Management | Devtest</title>
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}/">
+    </head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+        <a class="navbar-brand main-heading" href="{% url 'home' %}">
+          &nbsp; Devtest
+        </a>
+    </nav>
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h1> Profile Management </h1>
+        <br>
+        <form autocomplete="off" method="post">
+            {% csrf_token %}
+            {{user_form.username|as_crispy_field}}
+            <br>
+            {{user_form.email|as_crispy_field}}
+        </form>
+    </div>
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h3>Upload photo</h3>
+        <br><hr>
+        <form method="post" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{profile_form.profile_pic|as_crispy_field}}
+            <hr><br>
+            <input class="btn btn-primary" type="submit" value="Upload">
+        </form>
+    </div>
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <a href="{% url 'delete-user' %}">Delete Account</a>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</html>

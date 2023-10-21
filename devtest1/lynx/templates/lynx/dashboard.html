@@ -1,0 +1,26 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Dashboard | Devtest</title>
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}/">
+    </head>
+    {% include 'lynx/account-navbar.html' %}
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h1> Dashboard </h1>
+        <p>Welcome {{user}}</p>
+        <img src="{{profilePicture.profile_pic.url}}" style="width: 100px;">
+        <br>
+        <hr>
+        <a href="{% url 'user-logout' %}">Logout</a>
+        <br>
+        <a href="{% url 'profile-management' %}">Profile Management</a>
+    </div>
+
+
+    <script src="{% static 'js/app.js' %}"></script>
+</html>
